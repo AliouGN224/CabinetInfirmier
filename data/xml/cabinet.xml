@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cabinet>
+    <nom>Soins à Grenoble</nom>
+    <adresse>
+        <numero>60</numero>
+        <rue>rue de la Chimie</rue>
+        <codePostal>38041</codePostal>
+        <ville>Grenoble</ville>
+    </adresse>
+
+    <infirmiers>
+        <infirmier id="001">
+            <nom>Fréchie</nom>
+            <prenom>Sarah</prenom>
+            <photo>sarah.png</photo>
+        </infirmier>
+        <infirmier id="002">
+            <nom>Stické</nom>
+            <prenom>Sophie</prenom>
+            <photo>sophie.png</photo>
+        </infirmier>
+        <infirmier id="003">
+            <nom>Ochon</nom>
+            <prenom>Paul</prenom>
+            <photo>paul.png</photo>
+        </infirmier>
+    </infirmiers>
+
+    <patients>
+        <patient>
+            <nom>Fréchie</nom>
+            <prenom>Sarah</prenom>
+            <sexe>sarah.png</sexe>
+            <naissance>Fréchie</naissance>
+            <numero>Sarah</numero>
+            <adresse>
+                <etage>6</etage>
+                <numero>60</numero>
+                <rue>rue de la Chimie</rue>
+                <codePostal>38041</codePostal>
+                <ville>Grenoble</ville>
+            </adresse>
+            <visite>sarah.png</visite>
+        </patient>
+        <patient>
+            <nom>Fréchie</nom>
+            <prenom>Sarah</prenom>
+            <sexe>sarah.png</sexe>
+            <naissance>Fréchie</naissance>
+            <numero>Sarah</numero>
+            <adresse>
+                <etage>6</etage>
+                <numero>60</numero>
+                <rue>rue de la Chimie</rue>
+                <codePostal>38041</codePostal>
+                <ville>Grenoble</ville>
+            </adresse>
+            <visite>sarah.png</visite>
+        </patient>
+        <patient>
+            <nom>Fréchie</nom>
+            <prenom>Sarah</prenom>
+            <sexe>sarah.png</sexe>
+            <naissance>Fréchie</naissance>
+            <numero>Sarah</numero>
+            <adresse>
+                <etage>6</etage>
+                <numero>60</numero>
+                <rue>rue de la Chimie</rue>
+                <codePostal>38041</codePostal>
+                <ville>Grenoble</ville>
+            </adresse>
+            <visite>sarah.png</visite>
+        </patient>
+    </patients>
+    
+    
+    
+</cabinet>
