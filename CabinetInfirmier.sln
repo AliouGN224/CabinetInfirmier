@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabinetInfirmier", "CabinetInfirmier.csproj", "{DAD44D37-A87C-4D98-8BCE-806F25612535}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAD44D37-A87C-4D98-8BCE-806F25612535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD44D37-A87C-4D98-8BCE-806F25612535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD44D37-A87C-4D98-8BCE-806F25612535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD44D37-A87C-4D98-8BCE-806F25612535}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
