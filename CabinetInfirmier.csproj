@@ -7,12 +7,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="data\css\" />
-      <Folder Include="data\html\" />
-      <Folder Include="data\js\" />
-      <Folder Include="data\xsd\" />
-      <Folder Include="data\xslt\" />
-    </ItemGroup>
-
 </Project>
