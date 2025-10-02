@@ -43,19 +43,17 @@
 
     <!-- le type  Visite -->
     <complexType name="Visite">
-        <sequence>
-            <element name="date" type="date"/>
-            <element name="intervenant" type="string"/>
-            <element name="acte" type="medical:Acte" maxOccurs="unbounded"/>
-        </sequence>
+            <sequence>
+                <element name="acte" type="medical:Acte" maxOccurs="unbounded"/>
+            </sequence>
+            <attribute name="date" type="date"/>
+            <attribute name="intervenant" type="string"/>
     </complexType>
 
     <!-- le type Acte -->
     
     <complexType name="Acte">
-        <sequence>
-            <element name="id" type="string"/>
-        </sequence>
+        <attribute name="id" type="string"/>
     </complexType>
 
     <!-- le type Adresse -->
@@ -83,10 +81,10 @@
     <complexType name="Infirmier">
         <sequence>
             <element name="nom" type="string"/>
-            <element name="id" type="string"/>
             <element name="prenom" type="string"/>
             <element name="photo" type="string"/>
         </sequence>
+        <attribute name="id" type="string"></attribute>
     </complexType>
     
 </schema>
