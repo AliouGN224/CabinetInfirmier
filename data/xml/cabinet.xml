@@ -28,7 +28,7 @@
 
     <patients>
         <patient>
-            <nom>Fréchie</nom>
+            <nom>Alécole</nom>
             <prenom>Sarah</prenom>
             <sexe>sarah.png</sexe>
             <naissance>Fréchie</naissance>
@@ -37,10 +37,12 @@
                 <etage>6</etage>
                 <numero>60</numero>
                 <rue>rue de la Chimie</rue>
-                <codePostal>38041</codePostal>
                 <ville>Grenoble</ville>
+                <codePostal>38041</codePostal>
             </adresse>
-            <visite>sarah.png</visite>
+            <visite date="2025-12-08" intervenant="001">
+                <acte id="109"/>
+            </visite>
         </patient>
         <patient>
             <nom>Fréchie</nom>
@@ -52,10 +54,12 @@
                 <etage>6</etage>
                 <numero>60</numero>
                 <rue>rue de la Chimie</rue>
-                <codePostal>38041</codePostal>
                 <ville>Grenoble</ville>
+                <codePostal>38041</codePostal>
             </adresse>
-            <visite>sarah.png</visite>
+            <visite date="2025-12-08" intervenant="001">
+                <acte id="109"/>
+            </visite>
         </patient>
         <patient>
             <nom>Fréchie</nom>
@@ -67,10 +71,29 @@
                 <etage>6</etage>
                 <numero>60</numero>
                 <rue>rue de la Chimie</rue>
-                <codePostal>38041</codePostal>
                 <ville>Grenoble</ville>
+                <codePostal>38041</codePostal>
             </adresse>
-            <visite>sarah.png</visite>
+            <visite date="2025-12-08" intervenant="001">
+                <acte id="109"/>
+            </visite>
+        </patient>
+        <patient>
+            <nom>Fréchie</nom>
+            <prenom>Sarah</prenom>
+            <sexe>sarah.png</sexe>
+            <naissance>Fréchie</naissance>
+            <numero>Sarah</numero>
+            <adresse>
+                <etage>6</etage>
+                <numero>60</numero>
+                <rue>rue de la Chimie</rue>
+                <ville>Grenoble</ville>
+                <codePostal>38041</codePostal>
+            </adresse>
+            <visite date="2025-12-08" intervenant="001">
+                <acte id="109"/>
+            </visite>
         </patient>
     </patients>
     
