@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema 
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+>
+    
+    <!-- Declaration de la racine-->
+    <element name="cabinet" type="medical:Cabinet"/>
+    
+    <!-- Le type cabinet-->
+    
+    <complexType name="Cabinet">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="adresse" type="medical:Adresse"/>
+            <element name="patients" type="medical:Patients"/>
+            <element name="infrimiers" type="medical:Infirmiers"/>
+        </sequence>
+    </complexType>
+
+    <!-- le type liste Patients -->
+    
+    <complexType name="Patients">
+        <sequence>
+            <element name= 'patient' type="medical:Patient" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <!-- le type  Patient -->
+    
+    <complexType name="Patient">
+        <sequence>
+            <element name="numero" type="string" minOccurs="0"/>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="sexe" type="string"/>
+            <element name="naissance" type="date"/>
+            <element name="adresse" type="medical:Adresse"/>
+            <element name="visite" type="medical:Visite" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <!-- le type  Visite -->
+    <complexType name="Visite">
+            <sequence>
+                <element name="acte" type="medical:Acte" maxOccurs="unbounded"/>
+            </sequence>
+            <attribute name="date" type="date"/>
+            <attribute name="intervenant" type="string"/>
+    </complexType>
+
+    <!-- le type Acte -->
+    
+    <complexType name="Acte">
+        <attribute name="id" type="string"/>
+    </complexType>
+
+    <!-- le type Adresse -->
+    
+    <complexType name="Adresse">
+        <sequence>
+            <element name="etage" type="integer" minOccurs="0"/>
+            <element name="numero" type="integer"/>
+            <element name="rue" type="string"/>
+            <element name="codePostal" type="string"/>
+            <element name="ville" type="string"/>
+        </sequence>
+    </complexType>
+    
+    <!-- le type liste Infirmiers -->
+
+    <complexType name="Infirmiers">
+        <sequence>
+            <element name="infirmier" type="medical:Infirmier" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <!-- le type  Infrimier -->
+
+    <complexType name="Infirmier">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="photo" type="string"/>
+        </sequence>
+        <attribute name="id" type="string"></attribute>
+    </complexType>
+    
+</schema>
