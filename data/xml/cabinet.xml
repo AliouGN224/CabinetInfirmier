@@ -29,70 +29,66 @@
     <patients>
         <patient>
             <nom>Alécole</nom>
-            <prenom>Sarah</prenom>
-            <sexe>sarah.png</sexe>
-            <naissance>Fréchie</naissance>
-            <numero>Sarah</numero>
+            <prenom>Yvon</prenom>
+            <sexe>M</sexe>
+            <naissance>1998-08-22</naissance>
+            <numero>198082205545852</numero>
             <adresse>
                 <etage>6</etage>
-                <numero>60</numero>
-                <rue>rue de la Chimie</rue>
+                <numero>50</numero>
+                <rue>avenue Félix Viallet</rue>
                 <ville>Grenoble</ville>
-                <codePostal>38041</codePostal>
+                <codePostal>38031</codePostal>
             </adresse>
-            <visite date="2025-12-08" intervenant="001">
+            <visite date="2015-12-08" intervenant="001">
                 <acte id="109"/>
             </visite>
         </patient>
         <patient>
-            <nom>Fréchie</nom>
-            <prenom>Sarah</prenom>
-            <sexe>sarah.png</sexe>
-            <naissance>Fréchie</naissance>
-            <numero>Sarah</numero>
+            <nom>Orouge</nom>
+            <prenom>Elvire</prenom>
+            <sexe>F</sexe>
+            <naissance>1982-03-08</naissance>
+            <numero>282036902305218</numero>
             <adresse>
-                <etage>6</etage>
-                <numero>60</numero>
-                <rue>rue de la Chimie</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38041</codePostal>
+                <rue>Rond-Point de la Croix de Vie</rue>
+                <ville>La Tronche</ville>
+                <codePostal>38700</codePostal>
             </adresse>
-            <visite date="2025-12-08" intervenant="001">
-                <acte id="109"/>
+            <visite date="2015-12-08">
+                <acte id="300"/>
             </visite>
         </patient>
         <patient>
-            <nom>Fréchie</nom>
-            <prenom>Sarah</prenom>
-            <sexe>sarah.png</sexe>
-            <naissance>Fréchie</naissance>
-            <numero>Sarah</numero>
+            <nom> Pien</nom>
+            <prenom>Oscare</prenom>
+            <sexe>F</sexe>
+            <naissance>1975-03-25</naissance>
+            <numero>275037306569202</numero>
             <adresse>
-                <etage>6</etage>
-                <numero>60</numero>
-                <rue>rue de la Chimie</rue>
+                <rue>rue Casimir Brenier 38000 Grenoble</rue>
                 <ville>Grenoble</ville>
                 <codePostal>38041</codePostal>
             </adresse>
-            <visite date="2025-12-08" intervenant="001">
-                <acte id="109"/>
+            <visite date="2015-12-08">
+                <acte id="101"/>
+                <acte id="104"/>
             </visite>
         </patient>
         <patient>
-            <nom>Fréchie</nom>
-            <prenom>Sarah</prenom>
-            <sexe>sarah.png</sexe>
-            <naissance>Fréchie</naissance>
-            <numero>Sarah</numero>
+            <nom>Kapoëtla</nom>
+            <prenom>Xavier</prenom>
+            <sexe>M</sexe>
+            <naissance>2011-08-02</naissance>
+            <numero>111083306303521</numero>
             <adresse>
-                <etage>6</etage>
-                <numero>60</numero>
-                <rue>rue de la Chimie</rue>
+                <numero>25</numero>
+                <rue>rue des Martyrs</rue>
                 <ville>Grenoble</ville>
-                <codePostal>38041</codePostal>
+                <codePostal>38042</codePostal>
             </adresse>
-            <visite date="2025-12-08" intervenant="001">
-                <acte id="109"/>
+            <visite date="2025-12-08">
+                <acte id="111"/>
             </visite>
         </patient>
     </patients>
