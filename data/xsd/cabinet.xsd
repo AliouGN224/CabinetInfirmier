@@ -73,7 +73,7 @@
             <element name="etage" type="integer" minOccurs="0"/>
             <element name="numero" type="integer" minOccurs="0"/>
             <element name="rue" type="string"/>
-            <element name="codePostal" type="string"/>
+            <element name="codePostal" type="medical:CodePostal"/>
             <element name="ville" type="string"/>
         </sequence>
     </complexType>
@@ -85,6 +85,7 @@
             <element name="infirmier" type="medical:Infirmier" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
+    
 
     <!-- le type  Infrimier -->
 
@@ -96,7 +97,15 @@
         </sequence>
         <attribute name="id" type="string"/>
     </complexType>
-    
+
+    <!-- le type CodePostal -->
+    <simpleType name="CodePostal">
+        <restriction base="string">
+            <pattern value="\d{5}"/>
+        </restriction>
+    </simpleType>
+
+    <!-- le type  Numéro sécurité social -->
     <simpleType name="NumeroSecuriteScocial">
         <restriction base="string">
             <pattern value="[1-4]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d|2A|2B|99)(0\d{2}|[1-9]\d{2}){2}\d{2}"/>
