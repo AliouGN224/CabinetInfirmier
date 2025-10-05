@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 <schema 
         xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical"
@@ -14,8 +14,18 @@
         <sequence>
             <element name="nom" type="string"/>
             <element name="adresse" type="medical:Adresse"/>
-            <element name="patients" type="medical:Patients"/>
-            <element name="infrimiers" type="medical:Infirmiers"/>
+            <element name="patients" type="medical:Patients">
+                <key name="numeroUnique">
+                    <selector xpath="medical:patient"/>
+                    <field xpath="numero"/>
+                </key>
+            </element>
+            <element name="infrimiers" type="medical:Infirmiers">
+                <key name="idUnique">
+                    <selector xpath="medical:infirmier"/>
+                    <field xpath="@id"/>
+                </key>
+            </element>
         </sequence>
     </complexType>
 
@@ -31,10 +41,10 @@
     
     <complexType name="Patient">
         <sequence>
-            <element name="numero" type="medical:NumeroSecuriteScocial" minOccurs="0"/>
+            <element name="numero" type="medical:NumeroSecuriteScocial"/>
             <element name="nom" type="string"/>
             <element name="prenom" type="string"/>
-            <element name="sexe" type="string"/>
+            <element name="sexe" type="medical:SexeType"/>
             <element name="naissance" type="date"/>
             <element name="adresse" type="medical:Adresse"/>
             <element name="visite" type="medical:Visite" minOccurs="1" maxOccurs="unbounded"/>
@@ -61,9 +71,9 @@
     <complexType name="Adresse">
         <sequence>
             <element name="etage" type="integer" minOccurs="0"/>
-            <element name="numero" type="integer"/>
+            <element name="numero" type="integer" minOccurs="0"/>
             <element name="rue" type="string"/>
-            <element name="codePostal" type="string"/>
+            <element name="codePostal" type="medical:CodePostal"/>
             <element name="ville" type="string"/>
         </sequence>
     </complexType>
@@ -75,6 +85,7 @@
             <element name="infirmier" type="medical:Infirmier" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
+    
 
     <!-- le type  Infrimier -->
 
@@ -86,10 +97,27 @@
         </sequence>
         <attribute name="id" type="string"/>
     </complexType>
-    
+
+    <!-- le type CodePostal -->
+    <simpleType name="CodePostal">
+        <restriction base="string">
+            <pattern value="\d{5}"/>
+        </restriction>
+    </simpleType>
+
+    <!-- le type  Numéro sécurité social -->
     <simpleType name="NumeroSecuriteScocial">
         <restriction base="string">
             <pattern value="[1-4]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d|2A|2B|99)(0\d{2}|[1-9]\d{2}){2}\d{2}"/>
+        </restriction>
+    </simpleType>
+    
+    <!-- Le type SexeType -->
+    
+    <simpleType name="SexeType">
+        <restriction base="string">
+            <enumeration value="F"/>
+            <enumeration value="M"/>
         </restriction>
     </simpleType>
 </schema>
