@@ -6,7 +6,13 @@
 >
     
     <!-- Declaration de la racine-->
-    <element name="cabinet" type="medical:Cabinet"/>
+    <element name="cabinet" type="medical:Cabinet">
+        <!-- La contrainte d'existance -->
+        <keyref name="intervenantExist" refer="medical:idUnique">
+            <selector xpath="medical:patients/medical:patient/medical:visite"/>
+            <field xpath="@intervenant"/>
+        </keyref>
+    </element>
     
     <!-- Le type cabinet-->
     
@@ -20,7 +26,7 @@
                     <field xpath="numero"/>
                 </key>
             </element>
-            <element name="infrimiers" type="medical:Infirmiers">
+            <element name="infirmiers" type="medical:Infirmiers">
                 <key name="idUnique">
                     <selector xpath="medical:infirmier"/>
                     <field xpath="@id"/>
@@ -93,7 +99,7 @@
         <sequence>
             <element name="nom" type="string"/>
             <element name="prenom" type="string"/>
-            <element name="photo" type="string"/>
+            <element name="photo" type="medical:PhotoType"/>
         </sequence>
         <attribute name="id" type="string"/>
     </complexType>
@@ -118,6 +124,14 @@
         <restriction base="string">
             <enumeration value="F"/>
             <enumeration value="M"/>
+        </restriction>
+    </simpleType>
+
+    <!-- Le type PhotoType -->
+    
+    <simpleType name="PhotoType">
+        <restriction base="string">
+            <pattern value=".+\.(jpg|jpeg|png|gif|bmp|svg)$"/>
         </restriction>
     </simpleType>
 </schema>
