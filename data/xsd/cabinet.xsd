@@ -3,6 +3,7 @@
         xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
 >
     
     <!-- Declaration de la racine-->
@@ -14,16 +15,16 @@
         <sequence>
             <element name="nom" type="string"/>
             <element name="adresse" type="medical:Adresse"/>
+            <element name="infirmiers" type="medical:Infirmiers">
+                <key name="idUnique">
+                    <selector xpath="medical:infirmier"/>
+                    <field xpath="@id"/>
+                </key>
+            </element>
             <element name="patients" type="medical:Patients">
                 <key name="numeroUnique">
                     <selector xpath="medical:patient"/>
                     <field xpath="numero"/>
-                </key>
-            </element>
-            <element name="infrimiers" type="medical:Infirmiers">
-                <key name="idUnique">
-                    <selector xpath="medical:infirmier"/>
-                    <field xpath="@id"/>
                 </key>
             </element>
         </sequence>
@@ -82,7 +83,7 @@
 
     <complexType name="Infirmiers">
         <sequence>
-            <element name="infirmier" type="medical:Infirmier" maxOccurs="unbounded"/>
+            <element name="infirmier" type="medical:Infirmier" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
     
