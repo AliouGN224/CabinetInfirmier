@@ -1,16 +1,21 @@
 <?xml version="1.1" encoding="UTF-8" ?>
-<schema 
+<schema
         xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         elementFormDefault="qualified"
 >
-    
+
     <!-- Declaration de la racine-->
-    <element name="cabinet" type="medical:Cabinet"/>
-    
+    <element name="cabinet" type="medical:Cabinet">
+        <keyref name="intervenantExiste" refer="medical:idUnique">
+            <selector xpath="medical:patients/medical:patient/medical:visite"/>
+            <field xpath="@intervenant"/>
+        </keyref>
+    </element>
+
     <!-- Le type cabinet-->
-    
+
     <complexType name="Cabinet">
         <sequence>
             <element name="nom" type="string"/>
@@ -24,14 +29,14 @@
             <element name="patients" type="medical:Patients">
                 <key name="numeroUnique">
                     <selector xpath="medical:patient"/>
-                    <field xpath="numero"/>
+                    <field xpath="medical:numero"/>
                 </key>
             </element>
         </sequence>
     </complexType>
 
     <!-- le type liste Patients -->
-    
+
     <complexType name="Patients">
         <sequence>
             <element name= 'patient' type="medical:Patient" maxOccurs="unbounded"/>
@@ -39,7 +44,7 @@
     </complexType>
 
     <!-- le type  Patient -->
-    
+
     <complexType name="Patient">
         <sequence>
             <element name="numero" type="medical:NumeroSecuriteScocial"/>
@@ -54,21 +59,21 @@
 
     <!-- le type  Visite -->
     <complexType name="Visite">
-            <sequence>
-                <element name="acte" type="medical:Acte" maxOccurs="unbounded"/>
-            </sequence>
-            <attribute name="date" type="date"/>
-            <attribute name="intervenant" type="string"/>
+        <sequence>
+            <element name="acte" type="medical:Acte" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="date" type="date"/>
+        <attribute name="intervenant" type="string"/>
     </complexType>
 
     <!-- le type Acte -->
-    
+
     <complexType name="Acte">
         <attribute name="id" type="string"/>
     </complexType>
 
     <!-- le type Adresse -->
-    
+
     <complexType name="Adresse">
         <sequence>
             <element name="etage" type="integer" minOccurs="0"/>
@@ -78,7 +83,7 @@
             <element name="ville" type="string"/>
         </sequence>
     </complexType>
-    
+
     <!-- le type liste Infirmiers -->
 
     <complexType name="Infirmiers">
@@ -86,7 +91,7 @@
             <element name="infirmier" type="medical:Infirmier" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
-    
+
 
     <!-- le type  Infrimier -->
 
@@ -112,9 +117,9 @@
             <pattern value="[1-4]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d|2A|2B|99)(0\d{2}|[1-9]\d{2}){2}\d{2}"/>
         </restriction>
     </simpleType>
-    
+
     <!-- Le type SexeType -->
-    
+
     <simpleType name="SexeType">
         <restriction base="string">
             <enumeration value="F"/>
