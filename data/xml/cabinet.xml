@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<cabinet>
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+    xsi:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/cabinet.xsd">
+    
     <nom>Soins à Grenoble</nom>
     <adresse>
         <numero>60</numero>
@@ -28,17 +32,17 @@
 
     <patients>
         <patient>
+            <numero>198082205545852</numero>
             <nom>Alécole</nom>
             <prenom>Yvon</prenom>
             <sexe>M</sexe>
             <naissance>1998-08-22</naissance>
-            <numero>198082205545852</numero>
             <adresse>
                 <etage>6</etage>
                 <numero>50</numero>
                 <rue>avenue Félix Viallet</rue>
-                <ville>Grenoble</ville>
                 <codePostal>38031</codePostal>
+                <ville>Grenoble</ville>
             </adresse>
             <visite date="2015-12-08" intervenant="005">
                 <acte id="109"/>
