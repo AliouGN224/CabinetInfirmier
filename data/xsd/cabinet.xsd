@@ -5,6 +5,7 @@
         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         elementFormDefault="qualified"
 >
+    <include schemaLocation="actes.xsd"/>
 
     <!-- Declaration de la racine-->
     <element name="cabinet" type="medical:Cabinet">
