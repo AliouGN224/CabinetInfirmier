@@ -52,6 +52,7 @@
                     <th>Prenom et Nom</th>
                     <th>Adresse</th>
                     <th>Soins</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
