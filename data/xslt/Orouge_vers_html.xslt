@@ -17,11 +17,11 @@
                 <div>
                     <h1>Informations Personnelles</h1>
                     <div>
-                        Numéro de sécurité social : <xsl:value-of select="patient/numero"/> <br/>
-                        Nom : <xsl:value-of select="patient/nom"/> <br/>
-                        Prénom : <xsl:value-of select="patient/prenom"/> <br/>
-                        Sexe : <xsl:value-of select="patient/sexe"/>  <br/>
-                        Adresse compléte : <xsl:if test="patient/adresse/numero"><xsl:value-of select="patient/adresse/numero"/> <xsl:text> </xsl:text> </xsl:if><xsl:value-of select="patient/adresse/rue"/> <xsl:text> </xsl:text> <xsl:value-of select="patient/adresse/codePostal"/> <xsl:if test="patient/adresse/etage"> <xsl:text> </xsl:text> ( étage : <xsl:value-of select="patient/adresse/etage"/> )</xsl:if> <br/>
+                        <strong>Numéro de sécurité social : </strong> <xsl:value-of select="patient/numero"/> <br/>
+                        <strong>Nom : </strong> <xsl:value-of select="patient/nom"/> <br/>
+                        <strong>Prénom : </strong><xsl:value-of select="patient/prenom"/> <br/>
+                        <strong>Sexe : </strong> <xsl:value-of select="patient/sexe"/>  <br/>
+                        <strong>Adresse compléte : </strong><xsl:if test="patient/adresse/numero"><xsl:value-of select="patient/adresse/numero"/> <xsl:text> </xsl:text> </xsl:if><xsl:value-of select="patient/adresse/rue"/> <xsl:text> </xsl:text> <xsl:value-of select="patient/adresse/codePostal"/> <xsl:if test="patient/adresse/etage"> <xsl:text> </xsl:text> ( <strong>étage :</strong> <xsl:value-of select="patient/adresse/etage"/> )</xsl:if> <br/>
                     </div>
                     <div>
                         <h1>Les informations de vos visites par ordre</h1>
