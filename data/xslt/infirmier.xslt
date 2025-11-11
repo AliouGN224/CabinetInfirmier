@@ -16,23 +16,7 @@
             <head>
                 <title>Page Infirmier</title>
                 <link rel="stylesheet" type="text/css" href="../css/infirmier.css"/>
-                <script>
-                    function openFacture(prenom, nom, actes) {
-                        var width = 500;
-                        var height = 300;
-                        if (window.innerWidth) {
-                            var left = (window.innerWidth - width) / 2;
-                            var top = (window.innerHeight - height) / 2;
-                        } else {
-                            var left = (document.body.clientWidth - width) / 2;
-                            var top = (document.body.clientHeight - height) / 2;
-                        }
-                        var factureWindow = window.open('', 'facture', 'menubar=yes,scrollbars=yes,top=' + top + ',left=' + left + ',width=' + width + ',height=' + height);
-                        factureText = "Facture pour : " + prenom + " " + nom;
-                        factureWindow.document.write(factureText);
-                    }
-
-                </script>
+                <script type="text/javascript" src="../js/facture.js"/>
             </head>
             <body>
                 <h1>Page Infirmiere</h1>
@@ -63,15 +47,18 @@
     <!-- La liste des patients et des soins -->
     <xsl:template name="listePatients">
         <table>
-            <th>
-                <td>Prenom et Nom</td>
-                <td>Adresse</td>
-                <td>Soins</td>
-                <td>Facture</td>
-            </th>
-            <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
-                <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
-            </xsl:apply-templates>
+            <thead>
+                <tr>
+                    <th>Prenom et Nom</th>
+                    <th>Adresse</th>
+                    <th>Soins</th>
+                </tr>
+            </thead>
+            <tbody>
+                <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
+                    <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
+                </xsl:apply-templates>
+            </tbody>
         </table>
     </xsl:template>
     

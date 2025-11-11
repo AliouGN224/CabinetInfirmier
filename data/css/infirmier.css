@@ -1,0 +1,127 @@
+/* Style général */
+body {
+    font-family: "Segoe UI", Calibri, Arial, sans-serif;
+    background-color: #f9fafc;
+    margin: 0;
+    padding: 30px;
+    color: #333;
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    color: #005b8f;
+    font-size: 2em;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #0078d4;
+    padding-bottom: 10px;
+}
+
+/* Paragraphes d’accueil */
+p {
+    font-size: 1.1em;
+    margin: 8px 0;
+    text-align: center;
+}
+
+/* Tableau principal */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 91, 143, 0.1);
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* En-têtes du tableau */
+thead tr {
+    background-color: #0078d4;
+    color: white;
+}
+
+thead th {
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 1em;
+    text-transform: uppercase;
+    border-right: 1px solid #ffffff33;
+}
+
+thead th:last-child {
+    border-right: none;
+}
+
+/* Lignes du tableau */
+tbody tr:nth-child(even) {
+    background-color: #f4f8fc;
+}
+
+tbody tr:hover {
+    background-color: #e6f3ff;
+}
+
+/* Cellules du tableau */
+td {
+    padding: 12px 15px;
+    vertical-align: top;
+    border-right: 1px solid #d9e2ec;
+    border-bottom: 1px solid #d9e2ec;
+}
+
+/* Retirer la bordure à droite de la dernière colonne */
+td:last-child {
+    border-right: none;
+}
+
+/* Alignement des colonnes */
+td:nth-child(1) {
+    width: 20%;
+    font-weight: 500;
+}
+
+td:nth-child(2) {
+    width: 35%;
+}
+
+td:nth-child(3) {
+    width: 35%;
+}
+
+/* Liste des actes */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+ul li::before {
+    content: "• ";
+    color: #0078d4;
+    font-weight: bold;
+}
+
+/* Bouton "Facture" */
+button {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin: auto; /* centre le bouton */
+}
+
+button:hover {
+    background-color: #005b8f;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
