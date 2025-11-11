@@ -16,6 +16,7 @@
             <head>
                 <title>Page Infirmier</title>
                 <link rel="stylesheet" type="text/css" href="../css/infirmier.css"/>
+                <script type="text/javascript" src="../js/facture.js"/>
             </head>
             <body>
                 <h1>Page Infirmiere</h1>
@@ -46,14 +47,18 @@
     <!-- La liste des patients et des soins -->
     <xsl:template name="listePatients">
         <table>
-            <th>
-                <td>Prenom et Nom</td>
-                <td>Adresse</td>
-                <td>Soins</td>
-            </th>
-            <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
-                <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
-            </xsl:apply-templates>
+            <thead>
+                <tr>
+                    <th>Prenom et Nom</th>
+                    <th>Adresse</th>
+                    <th>Soins</th>
+                </tr>
+            </thead>
+            <tbody>
+                <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
+                    <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
+                </xsl:apply-templates>
+            </tbody>
         </table>
     </xsl:template>
     
@@ -80,6 +85,13 @@
                         </xsl:call-template>
                     </ul>
                 </td>
+                <td>
+                    <xsl:call-template name="bouton">
+                        <xsl:with-param name="nomPatient" select="inf:nom"/>
+                        <xsl:with-param name="prenomPatient" select="inf:prenom"/>
+                        <xsl:with-param name="actesPatient" select="inf:visite/inf:acte/@id"/>
+                    </xsl:call-template>
+                </td>
             </tr>
         </xsl:if>
     </xsl:template>
@@ -94,6 +106,32 @@
         </xsl:for-each>
         
     </xsl:template>
-    
-    
+
+    <!-- ...... -->
+    <xsl:template name="bouton">
+        <xsl:param name="nomPatient"/>
+        <xsl:param name="prenomPatient"/>
+        <xsl:param name="actesPatient"/>
+        <xsl:element name="button">
+            <xsl:attribute name="onclick">
+                <xsl:text>openFacture('</xsl:text>
+                <xsl:value-of select="$prenomPatient"/>
+                <xsl:text>','</xsl:text>
+                <xsl:value-of select="$nomPatient"/>
+                <xsl:text>','</xsl:text>
+                <xsl:value-of select="$actesPatient"/>
+                <xsl:text>')</xsl:text>
+                <!--
+                openFacture('<xsl:value-of select="$prenomPatient"/>',
+                            '<xsl:value-of select="$nomPatient"/>',
+                            <xsl:value-of select="$actesPatient"/>)
+                -->
+            </xsl:attribute>
+
+            <xsl:text>Facture</xsl:text>
+        </xsl:element>
+    </xsl:template>
+
+
+
 </xsl:stylesheet>
