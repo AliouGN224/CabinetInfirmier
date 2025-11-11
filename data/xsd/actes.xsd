@@ -20,10 +20,10 @@
                 </unique>
             </element>
             <element name="actes" type="act:Actes">
-                <unique name="uniqueActe">
+                <key name="uniqueActe">
                     <selector xpath="act:acte"/>
                     <field xpath="@id"/>
-                </unique>
+                </key>
             </element>
         </sequence>
     </complexType>
