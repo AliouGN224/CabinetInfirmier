@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="data\html\" />
+      <Folder Include="data\js\" />
+    </ItemGroup>
+
 </Project>

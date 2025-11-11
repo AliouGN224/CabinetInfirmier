@@ -92,7 +92,7 @@
                 <ville>Grenoble</ville>
             </adresse>
             <visite date="2025-12-08" intervenant="001">
-                <acte id="111"/>
+                <acte id="111"/> 
             </visite>
         </patient>
     </patients>
