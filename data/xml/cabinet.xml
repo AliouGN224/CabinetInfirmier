@@ -62,8 +62,9 @@
             <visite date="2015-12-08" intervenant="001">
                 <acte id="300"/>
             </visite>
-            <visite date="2015-12-08" intervenant="001">
+            <visite date="2015-10-08" intervenant="001">
                 <acte id="301"/>
+                <acte id="101"/>
             </visite>
         </patient>
         <patient>
