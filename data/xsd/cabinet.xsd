@@ -3,6 +3,7 @@
         xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:act="http://www.univ-grenoble-alpes.fr/l3miage/actes"
         elementFormDefault="qualified"
 >
     <include schemaLocation="actes.xsd"/>
@@ -12,6 +13,10 @@
         <keyref name="intervenantExiste" refer="medical:idUnique">
             <selector xpath="medical:patients/medical:patient/medical:visite"/>
             <field xpath="@intervenant"/>
+        </keyref>
+        <keyref name="acteExiste" refer="act:uniqueActe">
+            <selector xpath="act:actes/act:acte"/>
+            <field xpath="@id"/>
         </keyref>
     </element>
 
