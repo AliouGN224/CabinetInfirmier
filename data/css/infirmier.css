@@ -1,127 +1,141 @@
-/* Style général */
+/* Style global */
 body {
-    font-family: "Segoe UI", Calibri, Arial, sans-serif;
-    background-color: #f9fafc;
+    font-family: "Segoe UI", "Open Sans", sans-serif;
+    background-color: #f5faf6;
+    color: #2d3e50;
     margin: 0;
-    padding: 30px;
-    color: #333;
+    padding: 40px;
 }
 
 /* Titre principal */
 h1 {
     text-align: center;
-    color: #005b8f;
-    font-size: 2em;
-    margin-bottom: 30px;
-    border-bottom: 3px solid #0078d4;
-    padding-bottom: 10px;
+    color: #1b8c56;
+    font-weight: 600;
+    font-size: 2.1em;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
 }
 
-/* Paragraphes d’accueil */
+/* Message d'accueil */
 p {
-    font-size: 1.1em;
-    margin: 8px 0;
     text-align: center;
+    font-size: 1.05em;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
-/* Tableau principal */
+/* Encadrement principal du tableau */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0;
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 91, 143, 0.1);
-    border: 1px solid #d0d7de;
-    border-radius: 6px;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(27, 140, 86, 0.08);
+    margin-top: 40px;
 }
 
-/* En-têtes du tableau */
+/* En-tête du tableau */
 thead tr {
-    background-color: #0078d4;
+    background: linear-gradient(90deg, #1b8c56, #25b26d);
     color: white;
 }
 
 thead th {
     text-align: center;
-    padding: 12px 10px;
+    padding: 14px 10px;
     font-size: 1em;
-    text-transform: uppercase;
-    border-right: 1px solid #ffffff33;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-right: 1px solid rgba(255,255,255,0.3);
 }
 
 thead th:last-child {
     border-right: none;
 }
 
-/* Lignes du tableau */
+/* Corps du tableau */
+tbody tr {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
 tbody tr:nth-child(even) {
-    background-color: #f4f8fc;
+    background-color: #f1f9f3;
 }
 
 tbody tr:hover {
-    background-color: #e6f3ff;
+    background-color: #e2f4e6;
 }
 
-/* Cellules du tableau */
+/* Cellules */
 td {
-    padding: 12px 15px;
+    padding: 14px 18px;
     vertical-align: top;
-    border-right: 1px solid #d9e2ec;
-    border-bottom: 1px solid #d9e2ec;
+    border-bottom: 1px solid #dbe8df;
+    border-right: 1px solid #eaf3ed;
 }
 
-/* Retirer la bordure à droite de la dernière colonne */
 td:last-child {
     border-right: none;
 }
 
-/* Alignement des colonnes */
+/* Largeur des colonnes */
 td:nth-child(1) {
-    width: 20%;
+    width: 22%;
     font-weight: 500;
 }
 
 td:nth-child(2) {
-    width: 35%;
+    width: 36%;
 }
 
 td:nth-child(3) {
     width: 35%;
 }
 
-/* Liste des actes */
+/* Liste des soins (actes) */
 ul {
     list-style-type: none;
-    padding-left: 0;
     margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 4px;
+    line-height: 1.4;
 }
 
 ul li::before {
-    content: "• ";
-    color: #0078d4;
+    content: "› ";
+    color: #1b8c56;
     font-weight: bold;
 }
 
 /* Bouton "Facture" */
 button {
-    background-color: #0078d4;
-    color: white;
+    display: block;
+    margin: 0 auto;
+    background-color: #25b26d;
+    color: #fff;
     border: none;
     border-radius: 6px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     font-size: 0.95em;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: block;
-    margin: auto; /* centre le bouton */
+    transition: all 0.25s ease;
+    box-shadow: 0px 2px 4px rgba(37, 178, 109, 0.25);
 }
 
 button:hover {
-    background-color: #005b8f;
+    background-color: #1b8c56;
     transform: translateY(-2px);
 }
 
 button:active {
     transform: translateY(0);
+    background-color: #167a4b;
 }
