@@ -8,7 +8,7 @@
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
     <xsl:param name="destinedId">001</xsl:param>
-    <xsl:variable name="actes" select="document('../xml/actes.xml', /)/act:ngap"/>
+    <xsl:variable name="actes" select="document('C:/Users/mamad/Desktop/UGA/_2526/CabinetInfirmier/data/xml/actes.xml', /)/act:ngap"/>
 
     <!-- Template Racine -->
     <xsl:template match="/">

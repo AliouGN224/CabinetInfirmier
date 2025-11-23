@@ -1,5 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Schema;
+using System.Xml.XPath;
+using System.Xml.Xsl;
 
 namespace CabinetInfirmier;
 
@@ -8,7 +10,6 @@ public static class  XMLUtils {
     {
         var settings = new XmlReaderSettings();
         settings.Schemas.Add(schemaNamespace, xsdFilePath);
-        settings.Schemas.Add("http://www.univ-grenoble-alpes.fr/l3miage/actes", "data/xsd/actes.xsd");
         settings.ValidationType = ValidationType.Schema;
         Console.WriteLine("Nombre de schemas utilisés dans la validation : " + settings.Schemas.Count);
         settings.ValidationEventHandler += ValidationCallBack;
@@ -29,4 +30,27 @@ public static class  XMLUtils {
             Console.WriteLine(e.Message);
         }
     }
+    
+    public static void XslTransform(string xmlFilePath, string xsltFilePath, string htmlFilePath)
+    {
+        XPathDocument xpathDoc = new XPathDocument(xmlFilePath);
+        
+        //Autoriser document() et scripts
+        XsltSettings settings = new XsltSettings(enableDocumentFunction: true, enableScript: false);
+        XmlUrlResolver resolver = new XmlUrlResolver();
+        resolver.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+        XslCompiledTransform xslt = new XslCompiledTransform();
+        xslt.Load(xsltFilePath, settings, resolver);
+        
+        Console.WriteLine("XML chargé depuis : " + Path.GetFullPath(xmlFilePath));
+        Console.WriteLine("XSLT chargé depuis : " + Path.GetFullPath(xsltFilePath));
+        Console.WriteLine("Sortie : " + Path.GetFullPath(htmlFilePath));
+        
+        using (XmlTextWriter htmlWriter = new XmlTextWriter(htmlFilePath, null))
+        {
+            xslt.Transform(xpathDoc, null, htmlWriter, resolver);
+        }
+    }
+
 }
