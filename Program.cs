@@ -24,14 +24,28 @@ class Program
             "data/xml/actes.xml"
         );*/
         
-        XMLUtils.XslTransform(
+        /*XMLUtils.XslTransform(
             "../../../data/xml/cabinet.xml", 
             "../../../data/xslt/Orouge.xslt", 
             "../../../data/xml/Orouge.xml",
             "nomPatient",
-            "Kapoëtla");
+            "Kapoëtla"); */
+
+        // ======> Test de la methode AnalyseGlobale(stringfilepath)
+        //Cabinet.AnalyseGlobale("../../../data/xml/cabinet.xml");  // Test de la methode AnalyseGlobale(stringfilepath)
+        
+        // ======> Test récupération de texte d'éléments particuliers
+        /*foreach (var n in Cabinet.RecupererElementsFiltres("./data/xml/cabinet.xml", "nom", "patient")){
+            Console.WriteLine(n);
+            Console.WriteLine("---------------");
+        }*/
+        
+        // ======> Test compte combien d’actes différents ont été effectués
+        //Console.WriteLine("Nombre actes effectués = " + Cabinet.CompterDifferentsActesEffectues("./data/xml/cabinet.xml")); // 6
+        
         
         Cabinet cb = new Cabinet("data/xml/cabinet.xml");
         Console.WriteLine("Le nombre est : "+cb.isAllAdressPatientCompleted());
+
     }
 }

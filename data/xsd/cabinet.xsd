@@ -20,11 +20,11 @@
             <selector xpath="medical:patients/medical:patient/medical:visite"/>
             <field xpath="@intervenant"/>
         </keyref>
-        
-        <keyref name="acteExiste" refer="act:uniqueActe">
+
+        <!--<keyref name="acteExiste" refer="act:uniqueActe">
             <selector xpath="medical:patients/medical:patient/medical:visite/medical:acte"/>
             <field xpath="@id"/>
-        </keyref>
+        </keyref>-->
     </element>
 
 <!-- Le type cabinet-->
