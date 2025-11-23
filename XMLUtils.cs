@@ -31,7 +31,7 @@ public static class  XMLUtils {
         }
     }
     
-    public static void XslTransform(string xmlFilePath, string xsltFilePath, string htmlFilePath)
+    public static void XslTransform(string xmlFilePath, string xsltFilePath, string htmlFilePath, string paramName, string paramValue)
     {
         XPathDocument xpathDoc = new XPathDocument(xmlFilePath);
         
@@ -47,9 +47,12 @@ public static class  XMLUtils {
         Console.WriteLine("XSLT chargé depuis : " + Path.GetFullPath(xsltFilePath));
         Console.WriteLine("Sortie : " + Path.GetFullPath(htmlFilePath));
         
+        XsltArgumentList args = new XsltArgumentList();
+        args.AddParam(paramName, "", paramValue);
+        
         using (XmlTextWriter htmlWriter = new XmlTextWriter(htmlFilePath, null))
         {
-            xslt.Transform(xpathDoc, null, htmlWriter, resolver);
+            xslt.Transform(xpathDoc, args, htmlWriter, resolver);
         }
     }
 

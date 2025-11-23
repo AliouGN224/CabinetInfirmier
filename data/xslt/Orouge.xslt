@@ -12,7 +12,7 @@
     
     <!-- Le nom du patient reçu en paramétre -->
     
-    <xsl:param name="nomPatient" select="'Orouge'"/>
+    <xsl:param name="nomPatient" select="'Pien'"/>
     <xsl:template match="/">
         <patient>
             <xsl:apply-templates select="//medical:patients/medical:patient[medical:nom = $nomPatient]"/>

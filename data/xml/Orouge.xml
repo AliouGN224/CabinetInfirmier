@@ -1,34 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><patient xmlns:act="http://www.univ-grenoble-alpes.fr/l3miage/actes" xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical">
-    <nom>Orouge</nom>
-    <prenom>Elvire</prenom>
-    <sexe>F</sexe>
-    <numero>282036902305218</numero>
-    <adresse>
-        <rue>Rond-Point de la Croix de Vie</rue>
-        <codePostal>38700</codePostal>
-        <ville>La Tronche</ville>
-    </adresse>
-    <visite date="2015-12-08">
-        <intervenant>
-            <nom>Fréchie</nom>
-            <prenom>Sarah</prenom>
-        </intervenant>
-        <acte>
-            Pansement de brûlure étendue ou de plaie chimique ou thermique étendue,
-            sur une surface supérieure à 5% de la surface corporelle.
-        </acte>
-    </visite>
-    <visite date="2015-10-08">
-        <intervenant>
-            <nom>Fréchie</nom>
-            <prenom>Sarah</prenom>
-        </intervenant>
-        <acte> 
-            Prélèvement par ponction veineuse directe
-        </acte>
-        <acte>
-            Pansement d'ulcère étendu ou de greffe cutanée, sur une surface 
-            supérieure à 60 cm2.
-        </acte>
-    </visite>
-</patient>
+<patient xmlns:medical="http://www.univ-grenoble-alpes.fr/l3miage/medical" xmlns:act="http://www.univ-grenoble-alpes.fr/l3miage/actes"><nom>Kapoëtla</nom><prenom>Xavier</prenom><sexe>M</sexe><numero>111083306303521</numero><adresse><rue>rue des Martyrs</rue><codePostal>38042</codePostal><ville>Grenoble</ville></adresse><visite date="2025-12-08"><intervenant><nom>Fréchie</nom><prenom>Sarah</prenom></intervenant><acte>
+            Injection d'un ou plusieurs allergènes, poursuivant un traitement
+            d'hyposensibilisation spécifique, selon le protocole écrit, y compris la
+            surveillance, la tenue du dossier de soins, la transmission des informations 
+            au médecin prescripteur.
+        </acte></visite></patient>

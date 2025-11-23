@@ -21,7 +21,7 @@
             </head>
             <body>
                 <h1>Page Infirmiere</h1>
-                <xsl:apply-templates select="inf:infirmiers/inf:infirmier">
+                <xsl:apply-templates select="inf:cabinet/inf:infirmiers/inf:infirmier">
                     <xsl:with-param name="paramIdInf" select="$destinedId"/>
                 </xsl:apply-templates>
                 
@@ -57,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <xsl:apply-templates select="inf:patients/inf:patient">
+                <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
                     <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
                 </xsl:apply-templates>
             </tbody>

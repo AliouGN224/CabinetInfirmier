@@ -26,7 +26,9 @@ class Program
         
         XMLUtils.XslTransform(
             "../../../data/xml/cabinet.xml", 
-            "../../../data/xslt/infirmier.xslt", 
-            "../../../data/html/infirmier.html");
+            "../../../data/xslt/Orouge.xslt", 
+            "../../../data/xml/Orouge.xml",
+            "nomPatient",
+            "Kapoëtla");
     }
 }
