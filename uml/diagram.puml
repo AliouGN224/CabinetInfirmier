@@ -1,0 +1,83 @@
+@startuml
+
+namespace URI_CabinetMedical {
+
+class Cabinet {
+  - nom : string
+  - adresse : Adresse
+  - infirmiers : Infirmiers
+  - patients : Patients
+}
+
+class Adresse {
+  - etage : int [0..1]
+  - numero : int [0..1]
+  - rue : string
+  - codePostal : CodePostal
+  - ville : string
+}
+
+class CodePostal {
+  - valeur : string (\\d{5})
+}
+
+class Infirmiers {
+  - infirmier : List<Infirmier>
+}
+
+class Infirmier {
+  - id : string
+  - nom : string
+  - prenom : string
+  - photo : string
+}
+
+class Patients {
+  - patient : List<Patient>
+}
+
+class Patient {
+  - numero : NumeroSecuriteSocial
+  - nom : string
+  - prenom : string
+  - sexe : SexeType
+  - naissance : date
+  - adresse : Adresse
+  - visite : List<Visite> [1..*]
+}
+
+class NumeroSecuriteSocial {
+  - valeur : string ([1-4]\\d{2}...)
+}
+
+enum SexeType {
+  F
+  M
+}
+
+class Visite {
+  - date : date
+  - intervenant : string // ref Infirmier@id
+  - acte : List<Acte> [1..*]
+}
+
+class Acte {
+  - id : string // ref act:Acte@id
+}
+
+' ===== Associations =====
+Cabinet *-- Adresse
+Cabinet *-- Infirmiers
+Cabinet *-- Patients
+
+Infirmiers *-- "0..*" Infirmier
+Patients *-- "1..*" Patient
+
+Patient *-- Adresse
+Patient *-- "1..*" Visite
+
+Visite *-- "1..*" Acte
+
+}
+
+@enduml

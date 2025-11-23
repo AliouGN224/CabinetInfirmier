@@ -4,8 +4,8 @@
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
         xmlns:inf="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         xmlns:act='http://www.univ-grenoble-alpes.fr/l3miage/actes'>
-
-    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
+    
+    <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes" doctype-system="about:legacy-compat"/>
 
     <xsl:param name="destinedId">001</xsl:param>
     <xsl:variable name="actes" select="document('C:/Users/mamad/Desktop/UGA/_2526/CabinetInfirmier/data/xml/actes.xml', /)/act:ngap"/>
@@ -14,13 +14,14 @@
     <xsl:template match="/">
         <html>
             <head>
+                <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <title>Page Infirmier</title>
                 <link rel="stylesheet" type="text/css" href="../css/infirmier.css"/>
                 <script type="text/javascript" src="../js/facture.js"/>
             </head>
             <body>
                 <h1>Page Infirmiere</h1>
-                <xsl:apply-templates select="inf:cabinet/inf:infirmiers/inf:infirmier">
+                <xsl:apply-templates select="inf:infirmiers/inf:infirmier">
                     <xsl:with-param name="paramIdInf" select="$destinedId"/>
                 </xsl:apply-templates>
                 
@@ -56,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <xsl:apply-templates select="inf:cabinet/inf:patients/inf:patient">
+                <xsl:apply-templates select="inf:patients/inf:patient">
                     <xsl:with-param name="paramIdIntervenant" select="$destinedId"/>
                 </xsl:apply-templates>
             </tbody>
@@ -81,9 +82,7 @@
                 <td> 
                     <xsl:variable name="idActe" select="inf:visite/inf:acte/@id"/>
                     <ul>
-                        <xsl:call-template name="recupererActe" >
-                            <xsl:with-param name="paramIdActe" select="$idActe"/>
-                        </xsl:call-template>
+                        <xsl:apply-templates select="$actes/act:actes/act:acte[@id = $idActe]" />
                     </ul>
                 </td>
                 <td>
@@ -97,15 +96,10 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template name="recupererActe">
-        <xsl:param name="paramIdActe"/>
-
-        <xsl:for-each select="$actes/act:actes/act:acte[@id = $paramIdActe]">
-            <li>
-                <xsl:value-of select="text()"/>
-            </li>
-        </xsl:for-each>
-        
+    <xsl:template match="act:acte">
+        <li>
+            <xsl:value-of select="text()"/>
+        </li>
     </xsl:template>
     <!-- ...... -->
     <xsl:template name="bouton">
