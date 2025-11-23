@@ -30,5 +30,8 @@ class Program
             "../../../data/xml/Orouge.xml",
             "nomPatient",
             "Kapoëtla");
+        
+        Cabinet cb = new Cabinet("data/xml/cabinet.xml");
+        Console.WriteLine("Le nombre est : "+cb.isAllAdressPatientCompleted());
     }
 }
