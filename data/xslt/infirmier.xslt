@@ -101,7 +101,6 @@
             <xsl:value-of select="text()"/>
         </li>
     </xsl:template>
-
     <!-- ...... -->
     <xsl:template name="bouton">
         <xsl:param name="nomPatient"/>

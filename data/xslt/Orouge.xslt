@@ -42,7 +42,7 @@
         <visite date="{$date}">
             <xsl:apply-templates select="//medical:infirmiers/medical:infirmier[@id = $idIntervenant]"/>
             <xsl:variable name="idActe" select="medical:acte/@id"/>
-            <xsl:apply-templates select="$actes/act:actes/act:acte[@id = $idActe]"/>
+            <xsl:apply-templates select="$actes /act:actes/act:acte[@id = $idActe]"/>
         </visite>
     </xsl:template>
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:patient="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:act="http://www.univ-grenoble-alpes.fr/l3miage/actes"
+        elementFormDefault="qualified"
+>
+      <!-- la racine -->
+    <element name="patient" type="patient:Patient"/>
+    <complexType name="Patient">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="sexe" type="patient:SexeType"/>
+            <element name="naissance" type="date"/>
+            <element name="numeroSS" type="patient:NumeroSecuriteScocial"/>
+            <element name="adresse" type="patient:Adresse"/>
+            <element name="visite" type="patient:Visite" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+    <!-- le type  Numéro sécurité social -->
+    <simpleType name="NumeroSecuriteScocial">
+        <restriction base="string">
+            <pattern value="[1-4]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d|2A|2B|99)(0\d{2}|[1-9]\d{2}){2}\d{2}"/>
+        </restriction>
+    </simpleType>
+
+    <!-- Le type SexeType -->
+
+    <simpleType name="SexeType">
+        <restriction base="string">
+            <enumeration value="F"/>
+            <enumeration value="M"/>
+        </restriction>
+    </simpleType>
+
+    <!-- le type Adresse -->
+
+    <complexType name="Adresse">
+        <sequence>
+            <element name="etage" type="integer" minOccurs="0"/>
+            <element name="numero" type="integer" minOccurs="0"/>
+            <element name="rue" type="string"/>
+            <element name="codePostal" type="patient:CodePostal"/>
+            <element name="ville" type="string"/>
+        </sequence>
+    </complexType>
+
+    <!-- le type CodePostal -->
+    <simpleType name="CodePostal">
+        <restriction base="string">
+            <pattern value="\d{5}"/>
+        </restriction>
+    </simpleType>
+    
+    <complexType name="Visite">
+        <sequence>
+            <element name="intervenant" type="patient:Intervenant"/>
+            <element name="acte" type="string" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="date" type="date"/>
+    </complexType>
+    
+    
+    <complexType name="Intervenant">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
