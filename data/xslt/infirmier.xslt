@@ -107,7 +107,6 @@
         </xsl:for-each>
         
     </xsl:template>
-
     <!-- ...... -->
     <xsl:template name="bouton">
         <xsl:param name="nomPatient"/>
