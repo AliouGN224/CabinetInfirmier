@@ -64,6 +64,7 @@
         <attribute name="date" type="date"/>
     </complexType>
     
+    
     <complexType name="Intervenant">
         <sequence>
             <element name="nom" type="string"/>

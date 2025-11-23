@@ -1,0 +1,51 @@
+@startuml
+namespace http://www.univ-grenoble-alpes.fr/l3miage/medical{
+  class Patient {
+    - nom : string
+    - prenom : string
+    - sexe : SexeType
+    - naissance : Date
+    - numeroSS : NumeroSecuriteScocial
+    - adresse : Adresse 
+    - visite : Visite 
+  }
+  
+  class NumeroSecuriteScocial <<simpleType>> {
+    pattern : "[1-4]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d|2A|2B|99)(0\d{2}|[1-9]\d{2}){2}\d{2}"
+  }
+  
+  class Adresse {
+    - etage : integer (0..1)
+    - numero : integer (0..1)
+    - rue : string
+    - codePostal : CodePostal
+    - ville : string
+  }
+  
+  class CodePostal <<simpleType>> {
+     pattern : "\d{5}"
+  }
+  
+  class Visite {
+     - date : Date
+     - intervenant : Intervenant 
+     - acte : string (1..*)
+  }
+  
+  class Intervenant {
+     - nom : string
+     - prenom : string
+  }
+  enum SexeType {
+    F 
+    M
+  }
+  Patient *-- SexeType
+  Patient *-- NumeroSecuriteScocial
+  Patient *-- Adresse
+  Patient *-- "1..*" Visite
+  Visite *-- Intervenant
+   Adresse *-- CodePostal
+}
+
+@enduml
