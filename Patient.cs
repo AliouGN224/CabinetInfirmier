@@ -29,6 +29,23 @@ public class Patient
         get => _prenom;
         set => _prenom = value;
     }
+
+    private String _sexe;
+
+    [XmlElement("sexe")]
+    public String _Sexe
+    {
+        get => _sexe;
+        set => _sexe = value;
+    }
+    private String _dateNaissance;
+
+    [XmlElement("naissance")]
+    public String _DateNaissance
+    {
+        get => _dateNaissance;
+        set => _dateNaissance = value;
+    }
     private Adresse _adresse;
 
     [XmlElement("adresse")]

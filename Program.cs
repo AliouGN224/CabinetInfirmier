@@ -92,6 +92,17 @@ class Program
         Adresse adresse1 = new Adresse{_Etage = 2,_Numero = 75,_Rue = "Gabriel Peri", _CodePostal = "38400",_Ville = "Saint Martin d'heres"};
         Adresse adresse3 = new Adresse{_Etage = 7,_Numero = 20,_Rue = "Rue Anthoard", _CodePostal = "38000",_Ville = "Grenoble"};
         
+        Patient patient = new Patient{_Numero = "282036902305218",_Nom = "whannou",_Prenom = "Irving", _DateNaissance = "200-05-05",_Sexe = "M",_Adresse = adresse,_Visite = new List<Visite>{v1}};
+        Patient patient1 = new Patient{_Numero = "275037306569202",_Nom = "Diallo",_Prenom = "Diamila",_DateNaissance = "2020-12-09",_Sexe = "F",_Adresse = adresse1,_Visite = new List<Visite>{v1,v2}};
+        Patient patient2 = new Patient{_Numero = "275037306569202",_Nom = "Marie",_Prenom = "Darmanan",_DateNaissance = "2020-12-09",_Sexe = "F",_Adresse = adresse1,_Visite = new List<Visite>{v2,v3}};
+        
+        Patients listePatient = new Patients{_Patients = new List<Patient>{patient, patient1,patient2}};
+        
+        Cabinet cb3 = new Cabinet{_Nom = "Soins à Benin", _Adresse = adresse,_Patients = listePatient,_Infirmiers = inf3};
+        
+        cb3.SerialiserCabinet("../../../data/xml/cabinet_modif.xml");
+
+        
         
 
 

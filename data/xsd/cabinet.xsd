@@ -62,7 +62,7 @@
             <element name="nom" type="string"/>
             <element name="prenom" type="string"/>
             <element name="sexe" type="medical:SexeType"/>
-            <element name="naissance" type="date"/>
+            <element name="naissance" type="string"/>
             <element name="adresse" type="medical:Adresse"/>
             <element name="visite" type="medical:Visite" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>

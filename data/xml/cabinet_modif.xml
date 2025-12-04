@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cabinet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical">
+  <nom>Soins à Benin</nom>
+  <adresse>
+    <etage>9</etage>
+    <numero>20</numero>
+    <rue>Rue Anthoard</rue>
+    <codePostal>38000</codePostal>
+    <ville>Grenoble</ville>
+  </adresse>
+  <infirmiers>
+    <infirmier id="006">
+      <nom>TenHAG</nom>
+      <prenom>Darmanan</prenom>
+      <photo>darmanan.png</photo>
+    </infirmier>
+    <infirmier id="007">
+      <nom>DIAMILA</nom>
+      <prenom>Beyrou</prenom>
+      <photo>beyrou.png</photo>
+    </infirmier>
+  </infirmiers>
+  <patients>
+    <patient>
+      <numero>282036902305218</numero>
+      <nom>whannou</nom>
+      <prenom>Irving</prenom>
+      <sexe>M</sexe>
+      <naissance>200-05-05</naissance>
+      <adresse>
+        <etage>9</etage>
+        <numero>20</numero>
+        <rue>Rue Anthoard</rue>
+        <codePostal>38000</codePostal>
+        <ville>Grenoble</ville>
+      </adresse>
+      <visite date="2015-02-11" intervenant="001">
+        <acte id="109" />
+        <acte id="101" />
+        <acte id="102" />
+      </visite>
+    </patient>
+    <patient>
+      <numero>275037306569202</numero>
+      <nom>Diallo</nom>
+      <prenom>Diamila</prenom>
+      <sexe>F</sexe>
+      <naissance>2020-12-09</naissance>
+      <adresse>
+        <etage>2</etage>
+        <numero>75</numero>
+        <rue>Gabriel Peri</rue>
+        <codePostal>38400</codePostal>
+        <ville>Saint Martin d'heres</ville>
+      </adresse>
+      <visite date="2015-02-11" intervenant="001">
+        <acte id="109" />
+        <acte id="101" />
+        <acte id="102" />
+      </visite>
+      <visite date="2015-03-21" intervenant="003">
+        <acte id="101" />
+        <acte id="102" />
+      </visite>
+    </patient>
+    <patient>
+      <numero>275037306569202</numero>
+      <nom>Marie</nom>
+      <prenom>Darmanan</prenom>
+      <sexe>F</sexe>
+      <naissance>2020-12-09</naissance>
+      <adresse>
+        <etage>2</etage>
+        <numero>75</numero>
+        <rue>Gabriel Peri</rue>
+        <codePostal>38400</codePostal>
+        <ville>Saint Martin d'heres</ville>
+      </adresse>
+      <visite date="2015-03-21" intervenant="003">
+        <acte id="101" />
+        <acte id="102" />
+      </visite>
+      <visite date="2015-05-11" intervenant="003">
+        <acte id="109" />
+        <acte id="101" />
+      </visite>
+    </patient>
+  </patients>
+</cabinet>
