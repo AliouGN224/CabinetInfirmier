@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5884f6e-411f-4f9b-9b0b-ea079dc6e800" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/data/xslt/infirmier.xslt" beforeDir="false" afterPath="$PROJECT_DIR$/data/xslt/infirmier.xslt" afterDir="false" />
-    </list>
+    <list default="true" id="f5884f6e-411f-4f9b-9b0b-ea079dc6e800" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +54,7 @@
       <updated>1763047692571</updated>
       <workItem from="1763047693731" duration="730000" />
       <workItem from="1763642196429" duration="9000" />
+      <workItem from="1764660450244" duration="725000" />
     </task>
     <servers />
   </component>

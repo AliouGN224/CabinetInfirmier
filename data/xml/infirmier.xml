@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<infirmier id="002"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+           xsi:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/cabinet.xsd">
+    <nom>Stické</nom>
+    <prenom>Sophie</prenom>
+    <photo>sophie.png</photo>
+</infirmier>

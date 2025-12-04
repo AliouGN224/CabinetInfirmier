@@ -1,9 +1,48 @@
 ﻿using System.Xml;
+using System.Xml.Serialization;
 
 namespace CabinetInfirmier;
-
+[XmlRoot("cabinet",Namespace = "http://www.univ-grenoble-alpes.fr/l3miage/medical")]
+[Serializable]
 public class Cabinet
 {
+    private String _nom;
+
+    [XmlElement("nom")]
+    public String _Nom
+    {
+        get => _nom;
+        set => _nom = value;
+    }
+    private Adresse _adresse;
+
+    [XmlElement("adresse")]
+    public Adresse _Adresse
+    {
+        get => _adresse;
+        set => _adresse = value;
+    }
+    private Infirmiers _infirmiers;
+
+    [XmlElement("infirmiers")]
+    public Infirmiers _Infirmiers
+    {
+        get => _infirmiers;
+        set => _infirmiers = value;
+    }
+    private Patients _patients;
+
+    [XmlElement("patients")]
+    public Patients _Patients
+    {
+        get => _patients;
+        set => _patients = value;
+    }
+
+    public Cabinet() {}
+    
+    
+    
     private XmlDocument doc;
     private XmlNode root;
     private string nom;
@@ -187,5 +226,48 @@ public class Cabinet
         }
         return isTrue;
     }
+    
+    
+    // Les méthodes pour serialiser et deserialiser un cabinet 
+    
+    public void DeserialiserCabinet(String path)
+    {
+        using (TextReader reader = new StreamReader(path))
+        {
+            var xmlCabinet = new XmlSerializer(typeof(Cabinet));
+            var deserialized = (Cabinet)xmlCabinet.Deserialize(reader);
+            this._nom = deserialized._nom;
+            this._adresse = deserialized._adresse;
+            this._infirmiers = deserialized._infirmiers;
+            this._patients = deserialized._patients;
 
+        }
+    }
+    
+    public void SerialiserCabinet(String path)
+    {
+        
+        using (var writer = new StreamWriter(path))
+        {
+            var xmlCabinet = new XmlSerializer(typeof(Cabinet));
+            xmlCabinet.Serialize(writer, this);
+            Console.WriteLine("Serialisation effectué avec succés");
+        } 
+    }
+    
+    
+    // Methode string pour afficher toutes les informations du cabinet
+
+    public override string ToString()
+    {
+        String s ="Nom du cabinet : "+this._Nom+"\nAdresse du cabinet : "+this._Adresse._Numero+" "+this._Adresse._Rue+" "+this._Adresse._CodePostal+" "+this._Adresse._Ville;
+        // recuperer les informations des infirmier
+
+        s+= "\n _____La liste des infirmiers______ ";
+        s += _Infirmiers.toString();
+        s += _Patients.ToString();
+        
+       
+        return s;
+    }
 }

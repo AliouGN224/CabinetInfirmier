@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infirmiers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical">
+  <infirmier id="006">
+    <nom>TenHAG</nom>
+    <prenom>Darmanan</prenom>
+    <photo>darmanan.png</photo>
+  </infirmier>
+  <infirmier id="007">
+    <nom>DIAMILA</nom>
+    <prenom>Beyrou</prenom>
+    <photo>beyrou.png</photo>
+  </infirmier>
+</infirmiers>
