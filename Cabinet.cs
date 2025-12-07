@@ -196,7 +196,7 @@ public class Cabinet
     }
 
     // Compte le nombre d'élement correspondant à xpath
-    public int count(string xPath)
+    public int counter(string xPath)
     {
         XmlNodeList nodeList = this.getElementsNodeList(xPath);
         return nodeList.Count;
@@ -227,6 +227,300 @@ public class Cabinet
         return isTrue;
     }
     
+    // Fonction qui, appliquant un chemin XPath à un document XML, renvoie une NodeList.
+    public XmlNodeList getNodes(String xpathExpression) {
+        XmlNodeList nodeList = null;
+        XmlNamespaceManager namespaceManager = new XmlNamespaceManager(new NameTable());
+        namespaceManager.AddNamespace("medical", "http://www.univ-grenoble-alpes.fr/l3miage/medical");
+        nodeList = doc.SelectNodes(xpathExpression, namespaceManager);
+        return nodeList;
+    }
+    
+    public bool verifierNumeroSecuriteSociale(string numero, char sexe, DateTime dateNaissance)
+    {
+        bool estValide = true;
+        
+        if (numero.Length != 15)
+        {
+            Console.WriteLine("Numéro de sécurité sociale invalide : longueur incorrecte.");
+            estValide = false;
+        }
+
+        int sexeAttendu = sexe == 'M' ? 1 : (sexe == 'F' ? 2 : 0); 
+        if (sexeAttendu == 0 || (estValide && int.Parse(numero[0].ToString()) != sexeAttendu))
+        {
+            Console.WriteLine("Sexe non cohérent avec le numéro de sécurité sociale.");
+            estValide = false;
+        }
+
+        if (estValide)
+        {
+            int anneeNaissance = int.Parse(numero.Substring(1, 2));
+            int moisNaissance = int.Parse(numero.Substring(3, 2));
+
+            if (anneeNaissance != dateNaissance.Year % 100 || moisNaissance != dateNaissance.Month)
+            {
+                Console.WriteLine("Date de naissance non cohérente avec le numéro de sécurité sociale.");
+                estValide = false;
+            }
+        }
+        
+        if (estValide)
+        {
+            string numeroSansCle = numero.Substring(0, 13);
+            int cleDonnee = int.Parse(numero.Substring(13, 2));
+            int cleCalculee = 97 - (int)(long.Parse(numeroSansCle) % 97);
+
+            if (cleDonnee != cleCalculee)
+            {
+                Console.WriteLine("Clé invalide pour le numéro : " + numero + ". Clé attendue : " + cleCalculee);
+                estValide = false;
+            }
+        }
+
+        return estValide;
+    }
+    
+    // verifier que l’ensemble des numéros de sécurité sociale sont valides par rapport aux informations fournies
+    public bool verifierTousNumerosSecuriteSociale()
+    {
+        bool toutValide = true;
+
+        XmlNodeList patients = getNodes("//medical:patients/medical:patient");
+
+        foreach (XmlNode patient in patients)
+        {
+            XmlNamespaceManager nsManager = new XmlNamespaceManager(new NameTable());
+            nsManager.AddNamespace("medical", "http://www.univ-grenoble-alpes.fr/l3miage/medical");
+
+            string nom = patient.SelectSingleNode("medical:nom", nsManager) != null ? patient.SelectSingleNode("medical:nom", nsManager).InnerText : "Nom inconnu";
+            string prenom = patient.SelectSingleNode("medical:prenom", nsManager) != null ? patient.SelectSingleNode("medical:prenom", nsManager).InnerText : "Prénom inconnu";
+            string numeroSecurite = patient.SelectSingleNode("medical:numero", nsManager) != null ? patient.SelectSingleNode("medical:numero", nsManager).InnerText : "000000000000000";
+
+            char sexe = ' ';
+            XmlNode nodeSexe = patient.SelectSingleNode("medical:sexe", nsManager);
+            if (nodeSexe != null && !string.IsNullOrEmpty(nodeSexe.InnerText))
+                sexe = nodeSexe.InnerText[0];
+
+            DateTime dateNaissance = DateTime.MinValue;
+            XmlNode nodeNaissance = patient.SelectSingleNode("medical:naissance", nsManager);
+            if (nodeNaissance != null && !string.IsNullOrEmpty(nodeNaissance.InnerText))
+                dateNaissance = DateTime.Parse(nodeNaissance.InnerText);
+            
+            
+            bool estValide = verifierNumeroSecuriteSociale(numeroSecurite, sexe, dateNaissance);
+
+            if (!estValide)
+            {
+                Console.WriteLine("Numéro de sécurité sociale invalide pour " + nom + " " + prenom);
+                toutValide = false;
+            }
+        }
+
+        return toutValide;
+    }
+    // Modification de l'arbre d'instance avec DOM
+
+    // Methode pour ajouter un infirmier
+    public void ajouterInfirmier(String nom, String prenom)
+    {
+        XmlElement infirmier = doc.CreateElement( "infirmier", root.NamespaceURI);
+        XmlNodeList infirmiers = getNodes("//medical:infirmiers/medical:infirmier");
+
+        int maxId = 0;
+        
+        // Recupération de la plus grande valeur des identifiants
+        
+        foreach (XmlNode infirme in infirmiers)
+        {
+            if (infirme.Attributes != null && infirme.Attributes["id"] != null)
+            {
+                int id = int.Parse(infirme.Attributes["id"].Value);
+                //Console.WriteLine(id);
+                if (id > maxId)
+                {
+                    maxId = id;
+                }
+            }
+            
+        }
+        int idNewInf = maxId+1;
+        String idfinal = "00"+idNewInf.ToString();
+        
+        String photoNewInf = prenom + ".png";
+        XmlElement firstName = doc.CreateElement( "nom", root.NamespaceURI);
+        firstName.InnerText = nom;
+        XmlElement lastName = doc.CreateElement( "prenom", root.NamespaceURI);
+        lastName.InnerText = prenom;
+        XmlElement photo = doc.CreateElement( "photo", root.NamespaceURI);
+        photo.InnerText = photoNewInf;
+
+        // Creation de l'infirmier
+        
+        infirmier.SetAttribute("id", idfinal);
+        infirmier.AppendChild(firstName);
+        infirmier.AppendChild(lastName);
+        infirmier.AppendChild(photo);
+        
+        // Ajout de l'infirmier dans l'element infirmiers
+
+
+        var listeInfirmiers = ((XmlElement)root).GetElementsByTagName("infirmiers").Item(0);
+        if (listeInfirmiers != null)
+        {
+           
+            listeInfirmiers.AppendChild(infirmier);
+            Console.WriteLine("Ajout reussi !!");
+            
+        }
+        else
+        {
+            Console.WriteLine("Echec d'ajout !!");
+        }
+    }
+    
+    // Methode pour ajouter un client
+    public void ajouterPatient(String nom, String prenom, String sexe, String dateNaisse, string NSS, string numRue, String rue, String codePostal, String ville)
+    {
+        XmlElement patient = doc.CreateElement( "patient", root.NamespaceURI);
+        XmlElement firstName = doc.CreateElement( "nom", root.NamespaceURI);
+        firstName.InnerText = nom;
+        XmlElement lastName = doc.CreateElement( "prenom", root.NamespaceURI);
+        lastName.InnerText = prenom;
+        XmlElement genre = doc.CreateElement("sexe", root.NamespaceURI);
+        genre.InnerText = sexe;
+        XmlElement Naissance = doc.CreateElement( "naissance", root.NamespaceURI);
+        Naissance.InnerText = dateNaisse;
+        XmlElement numSecu = doc.CreateElement( "numero", root.NamespaceURI);
+        numSecu.InnerText = NSS;
+        XmlElement numR = doc.CreateElement("numero", root.NamespaceURI);
+        numR.InnerText = numRue;
+        XmlElement RUE = doc.CreateElement( "rue", root.NamespaceURI);
+        RUE.InnerText = rue;
+        XmlElement postal = doc.CreateElement( "codePostal", root.NamespaceURI);
+        postal.InnerText = codePostal;
+        XmlElement VILLE = doc.CreateElement( "ville", root.NamespaceURI);
+        VILLE.InnerText = ville;
+        XmlElement adr = doc.CreateElement( "adresse", root.NamespaceURI);
+        
+        
+        // Création de l'adresse 
+        
+        adr.AppendChild(numR);
+        adr.AppendChild(RUE);
+        adr.AppendChild(postal);
+        adr.AppendChild(VILLE);
+        
+        // Creation du patient
+
+        patient.AppendChild(firstName);
+        patient.AppendChild(lastName);
+        patient.AppendChild(genre);
+        patient.AppendChild(Naissance);
+        patient.AppendChild(numSecu);
+        patient.AppendChild(adr);
+        
+        // Ajout du patient dans l'element patients
+        
+        var listesPatients = ((XmlElement)root).GetElementsByTagName("patients").Item(0);
+        if (listesPatients != null)
+        {
+            Console.WriteLine("Ajout reussi !!");
+            listesPatients.AppendChild(patient);
+        }
+        else
+        {
+            Console.WriteLine("Echec d'ajout !!");
+        }
+    }
+    
+    // Methode pour ajouter une visite à un patient
+     public void ajouterVisite(String numeroSecu, String idActe, String numeroIntervenant, String dateVisite)
+    {
+        XmlNamespaceManager nsManager = new XmlNamespaceManager(new NameTable());
+        nsManager.AddNamespace("medical", "http://www.univ-grenoble-alpes.fr/l3miage/medical");
+        XmlNode patientAvisiter = doc.SelectSingleNode($"//medical:patients/medical:patient[medical:numero='{numeroSecu}']", nsManager);
+                                                                                                                                     // de Secu passe en paramétre
+        XmlNodeList infirmiers = getNodes("//medical:infirmiers/medical:infirmier");
+        
+        Boolean intervExiste = false;
+        
+       // Verifie si le numero d'intervenant passer en paramétre correspond à un infirmier
+
+       int i = 0;
+       while (i < infirmiers.Count && !intervExiste)
+       {
+           XmlNode infirm = infirmiers[i];
+           
+           if (infirm.Attributes != null && infirm.Attributes["id"] != null)
+           {
+               if (infirm.Attributes["id"].Value ==numeroIntervenant)
+               {
+                   intervExiste = true;
+               }
+           }
+
+           i = i + 1;
+       }
+       // verie si l'idActe passer en paramétre est correcte
+
+       XmlDocument actesDoc = new XmlDocument();
+       actesDoc.Load("data/xml/actes.xml");
+       
+       XmlNamespaceManager namespaceManage = new XmlNamespaceManager(doc.NameTable);
+       namespaceManage.AddNamespace("act","http://www.univ-grenoble-alpes.fr/l3miage/actes");
+       
+       XmlNodeList actes = actesDoc.SelectNodes("//act:actes/act:acte",namespaceManage);
+       int j = 0;
+       Boolean acteExiste = false;
+       while (j < actes.Count && !acteExiste)
+       {
+           XmlNode acte = actes[i];
+           
+           
+           if (acte.Attributes != null && acte.Attributes["id"] != null)
+           {
+
+               if (acte.Attributes["id"].Value == idActe)
+               {
+
+                   acteExiste = true;
+               }
+           }
+
+           i = i + 1;
+       }
+
+       if (intervExiste && acteExiste && patientAvisiter != null)
+       {
+           XmlElement Visite = doc.CreateElement( "visite", root.NamespaceURI);
+           XmlElement Acte = doc.CreateElement("acte", root.NamespaceURI);
+           
+           Acte.SetAttribute("id", idActe);
+           
+           
+           // Creation de la visite
+
+           Visite.SetAttribute("date",dateVisite);
+           Visite.SetAttribute("intervenant",numeroIntervenant);
+           Visite.AppendChild(Acte);
+           
+           Console.WriteLine("La visite :"+Visite.InnerXml);
+           // Ajout de la visite pour le patient concerné
+
+           patientAvisiter.AppendChild(Visite);
+           Console.WriteLine("Ajout effectuée avec succés");
+       }
+       else
+       {
+           Console.WriteLine("Echec d'ajout de la visite pour le patient !! Verifier que les informations fournies sont correctes");
+       }
+       
+
+
+
+    }
+    
     
     // Les méthodes pour serialiser et deserialiser un cabinet 
     
@@ -240,6 +534,8 @@ public class Cabinet
             this._adresse = deserialized._adresse;
             this._infirmiers = deserialized._infirmiers;
             this._patients = deserialized._patients;
+            
+            Console.WriteLine("Déserialisation effectuée avec succées !");
 
         }
     }
@@ -269,5 +565,11 @@ public class Cabinet
         
        
         return s;
+    }
+
+    // Methode pour visualiser le document xml
+    public string toStringDOM()
+    {
+        return doc.InnerXml;
     }
 }

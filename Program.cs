@@ -26,8 +26,8 @@ class Program
         
         /*XMLUtils.XslTransform(
             "../../../data/xml/cabinet.xml", 
-            "../../../data/xslt/Orouge.xslt", 
-            "../../../data/xml/Orouge.xml",
+            "../../../data/xslt/patient_xml.xsl", 
+            "../../../data/xml/patient.xml",
             "nomPatient",
             "Kapoëtla"); */
 
@@ -43,9 +43,18 @@ class Program
         // ======> Test compte combien d’actes différents ont été effectués
         //Console.WriteLine("Nombre actes effectués = " + Cabinet.CompterDifferentsActesEffectues("./data/xml/cabinet.xml")); // 6
         
-        
         Cabinet cb = new Cabinet("data/xml/cabinet.xml");
-        Console.WriteLine("Le nombre est : "+cb.isAllAdressPatientCompleted());
+        Console.WriteLine("Le nombre de patient dans le document est : :"+cb.counter("//medical:cabinet/medical:patients/medical:patient"));
+        Console.WriteLine("Le nombre d'infirmier dans le document est : "+cb.counter("//medical:cabinet/medical:infirmiers/medical:infirmier"));
+        Console.WriteLine("Le numero de secu est il correct : "+cb.verifierNumeroSecuriteSociale("282036902305218",'M',new DateTime(1998,8,22)));
+        Console.WriteLine("Verification de la validité de tous les numeros secu :"+cb.verifierTousNumerosSecuriteSociale());
+        
+        cb.ajouterInfirmier("Diallo","Sadou");
+        cb.ajouterPatient("Niskotch","Nicole","F","1992-03-14","292036912345643","23","rue des Tonneliers","69008","Lyon");
+        cb.ajouterVisite("292036912345643","102","001","2025-12-25");
+        Console.WriteLine("--------------------------------------- Le document aprés les ajout -----------------------------------------------------------");
+        Console.WriteLine(cb.toStringDOM());
+        Console.WriteLine("Est ce que tous les adressses des patients sont corrects ? : "+cb.isAllAdressPatientCompleted());
         
         Infirmiers inf = new Infirmiers();
         inf.DeserialiserInf("data/xml/infirmiers.xml"); 
@@ -74,13 +83,13 @@ class Program
          inf3.SerialiserInf("../../../data/xml/infirmiers1.xml");
          
          
-         Console.WriteLine("_____________________________Serialisation du cabinet______________________________________________");
+         Console.WriteLine("_____________________________Déserialisation  du cabinet______________________________________________");
          Cabinet cb2 = new Cabinet();
          cb2.DeserialiserCabinet("data/xml/cabinet.xml");
          Console.WriteLine(cb2.ToString());
          
          
-        Console.WriteLine("_______________________________Désérialisation du cabinet___________________________________________");
+        Console.WriteLine("_______________________________Sérialisation du cabinet___________________________________________");
         Acte acte = new Acte{_Id = 109};
         Acte acte2 = new Acte{_Id = 101};
         Acte acte3 = new Acte{_Id = 102};

@@ -33,13 +33,13 @@
       <None Update="data\xsd\cabinet.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="data\xslt\infirmier.xslt">
+      <None Update="data\xslt\cabinet.xsl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="data\xml\Orouge.xml">
+      <None Update="data\xml\patient.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="data\xslt\Orouge.xslt">
+      <None Update="data\xslt\patient_xml.xsl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="data\xml\infirmiers.xml">
