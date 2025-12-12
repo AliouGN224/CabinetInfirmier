@@ -32,16 +32,16 @@ class Program
             "Kapoëtla"); */
 
         // ======> Test de la methode AnalyseGlobale(stringfilepath)
-        //Cabinet.AnalyseGlobale("../../../data/xml/cabinet.xml");  // Test de la methode AnalyseGlobale(stringfilepath)
+        Cabinet.AnalyseGlobale("../../../data/xml/cabinet.xml");  // Test de la methode AnalyseGlobale(stringfilepath)
         
         // ======> Test récupération de texte d'éléments particuliers
-        /*foreach (var n in Cabinet.RecupererElementsFiltres("./data/xml/cabinet.xml", "nom", "patient")){
+        foreach (var n in Cabinet.RecupererElementsFiltres("./data/xml/cabinet.xml", "nom", "patient")){
             Console.WriteLine(n);
             Console.WriteLine("---------------");
-        }*/
+        }
         
         // ======> Test compte combien d’actes différents ont été effectués
-        //Console.WriteLine("Nombre actes effectués = " + Cabinet.CompterDifferentsActesEffectues("./data/xml/cabinet.xml")); // 6
+        Console.WriteLine("Nombre actes effectués = " + Cabinet.CompterDifferentsActesEffectues("./data/xml/cabinet.xml")); // 6
         
         Cabinet cb = new Cabinet("data/xml/cabinet.xml");
         Console.WriteLine("Le nombre de patient dans le document est : :"+cb.counter("//medical:cabinet/medical:patients/medical:patient"));
@@ -67,7 +67,7 @@ class Program
         Infirmier inf2 = new Infirmier();
         inf2._Id = "007";
         inf2._Nom = "DIAMILA";
-        inf2._Prenom = "Beyrou";
+        inf2._Prenom = "DSTML";
         inf2._Photo = "beyrou.png";
         List<Infirmier> list = new List<Infirmier>();
         list.Add(inf1);
